@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
             //Los snackBars son componentes visuales como el Toast pero pueden contener acciones
-            Snackbar.make(view, "Botón flotante que vive en el activity (nivel màs alto)", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Botón flotante que vive en el activity (nivel más alto)", Snackbar.LENGTH_LONG)
                     .setAction("Acción", null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
