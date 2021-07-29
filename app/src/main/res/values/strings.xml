@@ -21,5 +21,6 @@
     <string name="sw_fil_director">Director</string>
     <string name="sw_fil_producer">Productor</string>
     <string name="sw_fil_release_date">Fecha estreno</string>
+    <string name="menu_star_wars">Star Wars</string>
 
 </resources>
