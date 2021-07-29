@@ -3,10 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/star_wars_navigation"
-    app:startDestination="@id/filmsFragment">
+    app:startDestination="@id/starWarsFragment">
+
+    <fragment
+        android:id="@+id/starWarsFragment"
+        android:name="com.banregio.devuapp.starwars.StarWarsFragment"
+        android:label="@string/lbl_header_star_wars"
+        tools:layout="@layout/fragment_star_wars">
+        <action
+            android:id="@+id/action_starWarsFragment_to_filmsFragment"
+            app:destination="@id/filmsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/filmsFragment"
         android:name="com.banregio.devuapp.starwars.FilmsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films" />
+
 </navigation>
