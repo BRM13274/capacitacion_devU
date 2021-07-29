@@ -22,5 +22,7 @@
     <string name="sw_fil_producer">Productor</string>
     <string name="sw_fil_release_date">Fecha estreno</string>
     <string name="menu_star_wars">Star Wars</string>
+    <string name="sw_title">Api de <br/> <b>Star Wars</b></string>
+    <string name="btn_navigate_films">Navegar a la vista de filmes</string>
 
 </resources>
