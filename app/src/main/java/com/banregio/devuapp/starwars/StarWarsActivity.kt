@@ -1,4 +1,4 @@
-package com.banregio.devuapp
+package com.banregio.devuapp.starwars
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.banregio.devuapp.R
 import com.banregio.devuapp.connectivity.DURequestQueue
 import com.banregio.devuapp.connectivity.StarWarsApi
 import com.banregio.devuapp.util.TAG_DEBUG
@@ -65,6 +66,10 @@ class StarWarsActivity : AppCompatActivity() {
                 it.setItems(filmsList)
             }
         }
+    }
+
+    fun showLoading() {
+
     }
 
 }
