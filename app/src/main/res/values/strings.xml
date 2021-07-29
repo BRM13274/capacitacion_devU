@@ -14,4 +14,12 @@
     <string name="btn_action_message">¡Presiona el botón para disparar su ejecución!</string>
     <string name="msg_congratulations">¡Felicidades! lograste acceder al segúndo activity</string>
 
+    <!-- Strings for Star Wars module-->
+    <string name="fetch_films">Obtener películas</string>
+    <string name="sw_film_title">Título:</string>
+    <string name="sw_fil_id">Id episodio:</string>
+    <string name="sw_fil_director">Director</string>
+    <string name="sw_fil_producer">Productor</string>
+    <string name="sw_fil_release_date">Fecha estreno</string>
+
 </resources>
