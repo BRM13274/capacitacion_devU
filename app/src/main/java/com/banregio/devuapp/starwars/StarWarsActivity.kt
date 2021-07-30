@@ -1,20 +1,38 @@
 package com.banregio.devuapp.starwars
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.banregio.devuapp.R
 import com.banregio.devuapp.databinding.ActivityStarWarsBinding
 
 class StarWarsActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityStarWarsBinding
+    private lateinit var loadingDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStarWarsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupNavigation()
+
+        loadingDialog = Dialog(this)
+        loadingDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        loadingDialog.setContentView(R.layout.loading_layout)
+        loadingDialog.setCancelable(false)
+
+    }
+
+    override fun onDestroy() {
+        dismissLoading()
+        super.onDestroy()
     }
 
     private fun setupNavigation() {
@@ -35,7 +53,15 @@ class StarWarsActivity : AppCompatActivity() {
     }
 
     fun showLoading() {
+        if (!isFinishing) {
+            loadingDialog.show()
+        }
+    }
 
+    fun dismissLoading() {
+        if (loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
     }
 
 }
