@@ -1,4 +1,4 @@
-package com.banregio.devuapp
+package com.banregio.devuapp.starwars
 
 import com.google.gson.annotations.SerializedName
 

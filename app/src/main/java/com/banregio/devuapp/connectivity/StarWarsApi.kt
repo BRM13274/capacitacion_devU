@@ -6,4 +6,6 @@ object StarWarsApi {
 
     const val FILMS = "$BASE_URL/films"
 
+    const val STAR_SHIPS = "$BASE_URL/starships"
+
 }
