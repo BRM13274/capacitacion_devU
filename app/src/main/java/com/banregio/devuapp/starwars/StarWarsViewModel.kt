@@ -28,7 +28,7 @@ class StarWarsViewModel(private val appContext: Application) : AndroidViewModel(
             StarWarsApi.FILMS,
             null,
             {
-                requestSuccess(it)
+                processFilmsResponse(it)
             },
             {
                 mutableUiState.postValue(SWUIState.Error(it.toString()))
@@ -38,7 +38,24 @@ class StarWarsViewModel(private val appContext: Application) : AndroidViewModel(
         DURequestQueue.getInstance(appContext).addToRequestQueue(request)
     }
 
-    private fun requestSuccess(response: JSONObject) {
+    fun getStarShips() {
+        mutableUiState.postValue(SWUIState.Loading)
+        val request = JsonObjectRequest(
+            Request.Method.GET,
+            StarWarsApi.STAR_SHIPS,
+            null,
+            {
+                processStarShipsResponse(it)
+            },
+            {
+                mutableUiState.postValue(SWUIState.Error(it.toString()))
+            }
+        )
+
+        DURequestQueue.getInstance(appContext).addToRequestQueue(request)
+    }
+
+    private fun processFilmsResponse(response: JSONObject) {
         try {
             val result = response.getJSONArray("results")
             val typeOf = object : TypeToken<List<SWFilm>>() {}.type
@@ -48,5 +65,9 @@ class StarWarsViewModel(private val appContext: Application) : AndroidViewModel(
         } catch (e: JSONException) {
             Log.d(TAG_DEBUG, e.toString())
         }
+    }
+
+    private fun processStarShipsResponse(response: JSONObject) {
+
     }
 }
