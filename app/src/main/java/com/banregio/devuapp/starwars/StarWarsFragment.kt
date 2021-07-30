@@ -21,6 +21,10 @@ class StarWarsFragment : DevUFragment(R.layout.fragment_star_wars) {
         binding.btnGoToFilms.setOnClickListener {
             findNavController().navigate(R.id.action_starWarsFragment_to_filmsFragment)
         }
+
+        binding.btnGoToStarShips.setOnClickListener {
+            findNavController().navigate(R.id.action_starWarsFragment_to_starShipsFragment)
+        }
     }
 
 }

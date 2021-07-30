@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_starWarsFragment_to_filmsFragment"
             app:destination="@id/filmsFragment" />
+        <action
+            android:id="@+id/action_starWarsFragment_to_starShipsFragment"
+            app:destination="@id/starShipsFragment" />
     </fragment>
 
     <fragment
@@ -20,5 +23,11 @@
         android:name="com.banregio.devuapp.starwars.FilmsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films" />
+
+    <fragment
+        android:id="@+id/starShipsFragment"
+        android:name="com.banregio.devuapp.starwars.StarShipsFragment"
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_star_ships" />
 
 </navigation>

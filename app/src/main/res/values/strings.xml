@@ -25,5 +25,6 @@
     <string name="sw_title">Api de <br/> <b>Star Wars</b></string>
     <string name="btn_navigate_films">Navegar a la vista de filmes</string>
     <string name="lbl_header_star_wars">Star Wars</string>
+    <string name="btn_navigate_star_ships">Navegar a la vista de naves</string>
 
 </resources>
