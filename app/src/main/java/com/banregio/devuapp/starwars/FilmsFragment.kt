@@ -3,6 +3,9 @@ package com.banregio.devuapp.starwars
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -21,46 +24,34 @@ import org.json.JSONObject
 class FilmsFragment : DevUFragment(R.layout.fragment_films) {
 
     private val binding by viewLifecycle(FragmentFilmsBinding::bind)
+    private lateinit var viewModel: StarWarsViewModel
+    private val uiState = Observer<SWUIState> { uiState ->
+        when(uiState) {
+            is SWUIState.Loading -> {
+                showLoading(true)
+            }
+            is SWUIState.Error -> {
+                Toast.makeText(requireContext(), "Error de conexión", Toast.LENGTH_SHORT).show()
+                Log.d(TAG_DEBUG, uiState.errorMessage)
+            }
+            is SWUIState.OnFilmsLoaded -> {
+                showLoading(false)
+                showFilms(uiState.filmsList)
+            }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(StarWarsViewModel::class.java)
+        viewModel.uiState.observe(viewLifecycleOwner, uiState)
         setListeners()
 
     }
 
     private fun setListeners() {
         binding.btnFetchFilms.setOnClickListener {
-            getFilms()
-        }
-    }
-
-    private fun getFilms() {
-        val request = JsonObjectRequest(
-            Request.Method.GET,
-            StarWarsApi.FILMS,
-            null,
-            {
-                requestSuccess(it)
-            },
-            {
-
-            }
-        )
-
-        showLoading(true)
-        DURequestQueue.getInstance(requireActivity().application).addToRequestQueue(request)
-    }
-
-    private fun requestSuccess(response: JSONObject) {
-        showLoading()
-        try {
-            val result = response.getJSONArray("results")
-            val typeOf = object : TypeToken<List<SWFilm>>() {}.type
-            val filmsList: List<SWFilm> = Gson().fromJson(result.toString(), typeOf)
-            showFilms(filmsList)
-
-        } catch (e: JSONException) {
-            Log.d(TAG_DEBUG, e.toString())
+            viewModel.getFilms(requireActivity().application)
         }
     }
 
