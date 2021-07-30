@@ -47,14 +47,15 @@ class FilmsFragment : DevUFragment(R.layout.fragment_films) {
             }
         )
 
+        showLoading(true)
         DURequestQueue.getInstance(requireActivity().application).addToRequestQueue(request)
     }
 
     private fun requestSuccess(response: JSONObject) {
-
+        showLoading()
         try {
             val result = response.getJSONArray("results")
-            val typeOf = object : TypeToken<List<SWFilm>>(){}.type
+            val typeOf = object : TypeToken<List<SWFilm>>() {}.type
             val filmsList: List<SWFilm> = Gson().fromJson(result.toString(), typeOf)
             showFilms(filmsList)
 
@@ -69,6 +70,14 @@ class FilmsFragment : DevUFragment(R.layout.fragment_films) {
             adapter = FilmsAdapter().also {
                 it.setItems(filmsList)
             }
+        }
+    }
+
+    private fun showLoading(shouldShow: Boolean = false) {
+        if (shouldShow) {
+            (requireActivity() as? StarWarsActivity)?.showLoading()
+        } else {
+            (requireActivity() as? StarWarsActivity)?.dismissLoading()
         }
     }
 
