@@ -4,34 +4,26 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
 import com.banregio.devuapp.R
-import com.banregio.devuapp.connectivity.DURequestQueue
-import com.banregio.devuapp.connectivity.StarWarsApi
 import com.banregio.devuapp.databinding.FragmentFilmsBinding
 import com.banregio.devuapp.util.DevUFragment
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.banregio.devuapp.util.extensions.viewLifecycle
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import org.json.JSONException
-import org.json.JSONObject
 
 class FilmsFragment : DevUFragment(R.layout.fragment_films) {
 
     private val binding by viewLifecycle(FragmentFilmsBinding::bind)
-    private lateinit var viewModel: StarWarsViewModel
+    private val viewModel: StarWarsViewModel by activityViewModels()
     private val uiState = Observer<SWUIState> { uiState ->
         when(uiState) {
             is SWUIState.Loading -> {
                 showLoading(true)
             }
             is SWUIState.Error -> {
-                Toast.makeText(requireContext(), "Error de conexión", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error de connection", Toast.LENGTH_SHORT).show()
                 Log.d(TAG_DEBUG, uiState.errorMessage)
             }
             is SWUIState.OnFilmsLoaded -> {
@@ -43,7 +35,6 @@ class FilmsFragment : DevUFragment(R.layout.fragment_films) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StarWarsViewModel::class.java)
         viewModel.uiState.observe(viewLifecycleOwner, uiState)
         setListeners()
 
@@ -51,7 +42,7 @@ class FilmsFragment : DevUFragment(R.layout.fragment_films) {
 
     private fun setListeners() {
         binding.btnFetchFilms.setOnClickListener {
-            viewModel.getFilms(requireActivity().application)
+            viewModel.getFilms()
         }
     }
 

@@ -2,9 +2,9 @@ package com.banregio.devuapp.starwars
 
 import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.banregio.devuapp.connectivity.DURequestQueue
@@ -15,13 +15,13 @@ import com.google.gson.reflect.TypeToken
 import org.json.JSONException
 import org.json.JSONObject
 
-class StarWarsViewModel : ViewModel() {
+class StarWarsViewModel(private val appContext: Application) : AndroidViewModel(appContext) {
 
     private val mutableUiState = MutableLiveData<SWUIState>()
     val uiState: LiveData<SWUIState>
         get() = mutableUiState
 
-    fun getFilms(application: Application) {
+    fun getFilms() {
         mutableUiState.postValue(SWUIState.Loading)
         val request = JsonObjectRequest(
             Request.Method.GET,
@@ -35,7 +35,7 @@ class StarWarsViewModel : ViewModel() {
             }
         )
 
-        DURequestQueue.getInstance(application).addToRequestQueue(request)
+        DURequestQueue.getInstance(appContext).addToRequestQueue(request)
     }
 
     private fun requestSuccess(response: JSONObject) {
