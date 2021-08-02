@@ -26,5 +26,12 @@
     <string name="btn_navigate_films">Navegar a la vista de filmes</string>
     <string name="lbl_header_star_wars">Star Wars</string>
     <string name="btn_navigate_star_ships">Navegar a la vista de naves</string>
+    <string name="btn_show_notification">Mostrar notificación</string>
+    <!-- Notifications -->
+    <string name="lbl_notification_title">Nueva notificación</string>
+    <string name="lbl_notification_text">¡Hola! DevU, tienes una nueva notificación de la app</string>
+    <string name="lbl_notification_long_text">¡Hola! DevU, tienes una nueva notificación de la app, esta notificación fue generada desde la pantalla de notificaciones, accede a verla en código para crear tus propias notificaciones.</string>
+    <string name="lbl_notification_channel_name">CanalDevU</string>
+    <string name="lbl_notification_channel_description">Canal de notificaciones de la aplicaciónDevU</string>
 
 </resources>
