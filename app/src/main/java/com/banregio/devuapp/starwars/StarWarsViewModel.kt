@@ -15,6 +15,7 @@ import com.banregio.devuapp.MainActivity
 import com.banregio.devuapp.R
 import com.banregio.devuapp.connectivity.DURequestQueue
 import com.banregio.devuapp.connectivity.StarWarsApi
+import com.banregio.devuapp.starwars.domain.models.SWFilm
 import com.banregio.devuapp.util.DEFAULT_CHANNEL_ID
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.google.gson.Gson

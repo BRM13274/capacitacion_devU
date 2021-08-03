@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.banregio.devuapp.R
 import com.banregio.devuapp.databinding.FragmentFilmsBinding
+import com.banregio.devuapp.starwars.domain.models.SWFilm
 import com.banregio.devuapp.util.DevUFragment
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.banregio.devuapp.util.extensions.viewLifecycle
