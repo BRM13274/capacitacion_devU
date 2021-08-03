@@ -4,31 +4,23 @@ import android.app.Application
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
 import com.banregio.devuapp.MainActivity
 import com.banregio.devuapp.R
-import com.banregio.devuapp.connectivity.DURequestQueue
-import com.banregio.devuapp.connectivity.StarWarsApi
-import com.banregio.devuapp.starwars.domain.models.SWFilm
 import com.banregio.devuapp.starwars.domain.usescases.GetFilmsResult
 import com.banregio.devuapp.starwars.domain.usescases.GetFilmsUseCase
+import com.banregio.devuapp.starwars.domain.usescases.StarShipsResult
+import com.banregio.devuapp.starwars.domain.usescases.StarShipsUseCase
 import com.banregio.devuapp.util.DEFAULT_CHANNEL_ID
-import com.banregio.devuapp.util.TAG_DEBUG
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
-import org.json.JSONException
-import org.json.JSONObject
 
 class StarWarsViewModel(
     private val filmsUseCase: GetFilmsUseCase,
+    private val starShipsUseCase: StarShipsUseCase,
     private val appContext: Application
 ) : AndroidViewModel(appContext) {
 
@@ -39,7 +31,7 @@ class StarWarsViewModel(
     fun getFilms() {
         mutableUiState.postValue(SWUIState.Loading)
         viewModelScope.launch {
-            when(val filmsResult = filmsUseCase.execute()) {
+            when (val filmsResult = filmsUseCase.execute()) {
                 is GetFilmsResult.Success -> {
                     mutableUiState.postValue(SWUIState.OnFilmsLoaded(filmsResult.result))
                 }
@@ -52,23 +44,16 @@ class StarWarsViewModel(
 
     fun getStarShips() {
         mutableUiState.postValue(SWUIState.Loading)
-        val request = JsonObjectRequest(
-            Request.Method.GET,
-            StarWarsApi.STAR_SHIPS,
-            null,
-            {
-                processStarShipsResponse(it)
-            },
-            {
-                mutableUiState.postValue(SWUIState.Error(it.toString()))
+        viewModelScope.launch {
+            when (val starShipsResult = starShipsUseCase.execute()) {
+                is StarShipsResult.Success -> {
+                    mutableUiState.postValue(SWUIState.OnStarShipsLoaded(starShipsResult.result))
+                }
+                is StarShipsResult.Fail -> {
+                    mutableUiState.postValue(SWUIState.Error(starShipsResult.errorMessage))
+                }
             }
-        )
-
-        DURequestQueue.getInstance(appContext).addToRequestQueue(request)
-    }
-
-    private fun processStarShipsResponse(response: JSONObject) {
-
+        }
     }
 
     fun getNotification(): Notification {
