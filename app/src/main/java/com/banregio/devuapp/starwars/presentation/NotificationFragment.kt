@@ -6,13 +6,16 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.activityViewModels
 import com.banregio.devuapp.R
 import com.banregio.devuapp.databinding.FragmentNotificationBinding
+import com.banregio.devuapp.starwars.di.StarWarsModule
 import com.banregio.devuapp.util.DevUFragment
 import com.banregio.devuapp.util.extensions.viewLifecycle
 
 class NotificationFragment : DevUFragment(R.layout.fragment_notification) {
 
     private val binding by viewLifecycle(FragmentNotificationBinding::bind)
-    private val viewModel: StarWarsViewModel by activityViewModels()
+    private val viewModel: StarWarsViewModel by activityViewModels {
+        StarWarsModule.provideViewModelFactory(requireActivity().application)
+    }
 
     companion object {
         const val NOTIFICATION_ID = 1

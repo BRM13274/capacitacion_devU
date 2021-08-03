@@ -16,6 +16,7 @@ import com.banregio.devuapp.R
 import com.banregio.devuapp.connectivity.DURequestQueue
 import com.banregio.devuapp.connectivity.StarWarsApi
 import com.banregio.devuapp.starwars.domain.models.SWFilm
+import com.banregio.devuapp.starwars.domain.usescases.GetFilmsUseCase
 import com.banregio.devuapp.util.DEFAULT_CHANNEL_ID
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.google.gson.Gson
@@ -23,7 +24,10 @@ import com.google.gson.reflect.TypeToken
 import org.json.JSONException
 import org.json.JSONObject
 
-class StarWarsViewModel(private val appContext: Application) : AndroidViewModel(appContext) {
+class StarWarsViewModel(
+    private val filmsUseCase: GetFilmsUseCase,
+    private val appContext: Application
+) : AndroidViewModel(appContext) {
 
     private val mutableUiState = MutableLiveData<SWUIState>()
     val uiState: LiveData<SWUIState>
