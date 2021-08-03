@@ -4,7 +4,7 @@ import com.banregio.devuapp.starwars.domain.models.SWFilm
 import com.banregio.devuapp.starwars.domain.repositories.StarWarsRepository
 import com.banregio.devuapp.util.DevUResponse
 
-class GetFilmsUseCase(val repository: StarWarsRepository) {
+class GetFilmsUseCase(private val repository: StarWarsRepository) {
     suspend fun execute(): GetFilmsResult {
         return when(val rs = repository.getFilmsList()) {
             is DevUResponse.Successful -> {
