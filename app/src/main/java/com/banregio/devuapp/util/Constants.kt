@@ -4,3 +4,5 @@ package com.banregio.devuapp.util
 const val TAG_DEBUG: String = "DevU_Debug"
 
 const val DEFAULT_CHANNEL_ID: String = "devUApp"
+
+const val DEFAULT_SERVICE_ERROR: String = "Error en la consulta del servicio"
