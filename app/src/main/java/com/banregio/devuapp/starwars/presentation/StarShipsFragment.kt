@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation
 
 import com.banregio.devuapp.R
 import com.banregio.devuapp.util.DevUFragment

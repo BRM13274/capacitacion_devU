@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation
 
 import com.banregio.devuapp.starwars.domain.models.SWFilm
 

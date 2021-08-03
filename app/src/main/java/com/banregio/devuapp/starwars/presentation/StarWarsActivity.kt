@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation
 
 import android.app.Dialog
 import android.graphics.Color
