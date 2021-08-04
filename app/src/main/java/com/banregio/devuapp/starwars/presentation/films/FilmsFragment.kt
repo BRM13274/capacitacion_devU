@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars.presentation
+package com.banregio.devuapp.starwars.presentation.films
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,9 @@ import com.banregio.devuapp.R
 import com.banregio.devuapp.databinding.FragmentFilmsBinding
 import com.banregio.devuapp.starwars.di.StarWarsModule
 import com.banregio.devuapp.starwars.domain.models.SWFilm
+import com.banregio.devuapp.starwars.presentation.SWUIState
+import com.banregio.devuapp.starwars.presentation.StarWarsActivity
+import com.banregio.devuapp.starwars.presentation.StarWarsViewModel
 import com.banregio.devuapp.util.DevUFragment
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.banregio.devuapp.util.extensions.viewLifecycle

@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars.presentation
+package com.banregio.devuapp.starwars.presentation.films
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
