@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/starShipsFragment"
-        android:name="com.banregio.devuapp.starwars.presentation.StarShipsFragment"
+        android:name="com.banregio.devuapp.starwars.presentation.starships.StarShipsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_star_ships" />
 

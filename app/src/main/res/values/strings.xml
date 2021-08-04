@@ -14,18 +14,31 @@
     <string name="btn_action_message">¡Presiona el botón para disparar su ejecución!</string>
     <string name="msg_congratulations">¡Felicidades! lograste acceder al segúndo activity</string>
 
-    <!-- Strings for Star Wars module-->
+                                    <!-- Strings for Star Wars module-->
+    <string name="menu_star_wars">Star Wars</string>
+    <string name="sw_title">Api de <br/> <b>Star Wars</b></string>
+    <string name="btn_navigate_films">Navegar a la vista de filmes</string>
+    <string name="lbl_header_star_wars">Star Wars</string>
+    <string name="btn_navigate_star_ships">Navegar a la vista de naves</string>
+
+    <!-- Films -->
     <string name="fetch_films">Obtener películas</string>
     <string name="sw_film_title">Título:</string>
     <string name="sw_fil_id">Id episodio:</string>
     <string name="sw_fil_director">Director</string>
     <string name="sw_fil_producer">Productor</string>
     <string name="sw_fil_release_date">Fecha estreno</string>
-    <string name="menu_star_wars">Star Wars</string>
-    <string name="sw_title">Api de <br/> <b>Star Wars</b></string>
-    <string name="btn_navigate_films">Navegar a la vista de filmes</string>
-    <string name="lbl_header_star_wars">Star Wars</string>
-    <string name="btn_navigate_star_ships">Navegar a la vista de naves</string>
+
+    <!-- Star Ships -->
+    <string name="btn_show_star_ships">¡Muestrame las naves!</string>
+    <string name="btn_reload_star_ships">Recarga las naves >:v</string>
+    <string name="lbl_sw_name">Nombre:</string>
+    <string name="lbl_sw_model">Model:</string>
+    <string name="lbl_sw_cost">Precio:</string>
+    <string name="lbl_sw_speed">Velocidad:</string>
+    <string name="lbl_sw_crew_limit">Límite de tripulación:</string>
+    <string name="lbl_sw_class">Clase:</string>
+
     <!-- SW Notifications -->
     <string name="btn_navigate_notifications">Navegar a notificaciones</string>
     <string name="btn_show_notification">Mostrar notificación</string>
