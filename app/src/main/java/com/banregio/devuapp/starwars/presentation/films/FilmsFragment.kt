@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation.films
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.banregio.devuapp.R
 import com.banregio.devuapp.databinding.FragmentFilmsBinding
+import com.banregio.devuapp.starwars.di.StarWarsModule
+import com.banregio.devuapp.starwars.domain.models.SWFilm
+import com.banregio.devuapp.starwars.presentation.SWUIState
+import com.banregio.devuapp.starwars.presentation.StarWarsActivity
+import com.banregio.devuapp.starwars.presentation.StarWarsViewModel
 import com.banregio.devuapp.util.DevUFragment
 import com.banregio.devuapp.util.TAG_DEBUG
 import com.banregio.devuapp.util.extensions.viewLifecycle
@@ -16,9 +21,11 @@ import com.banregio.devuapp.util.extensions.viewLifecycle
 class FilmsFragment : DevUFragment(R.layout.fragment_films) {
 
     private val binding by viewLifecycle(FragmentFilmsBinding::bind)
-    private val viewModel: StarWarsViewModel by activityViewModels()
+    private val viewModel: StarWarsViewModel by activityViewModels {
+        StarWarsModule.provideViewModelFactory(requireActivity().application)
+    }
     private val uiState = Observer<SWUIState> { uiState ->
-        when(uiState) {
+        when (uiState) {
             is SWUIState.Loading -> {
                 showLoading(true)
             }

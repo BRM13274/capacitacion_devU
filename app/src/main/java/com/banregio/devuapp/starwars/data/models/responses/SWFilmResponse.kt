@@ -1,8 +1,8 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.data.models.responses
 
 import com.google.gson.annotations.SerializedName
 
-data class SWFilm(
+data class SWFilmResponse(
     val title: String,
     @SerializedName("episode_id")
     val episodeId: Int,

@@ -1,9 +1,10 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation.films
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.banregio.devuapp.databinding.FilmItemBinding
+import com.banregio.devuapp.starwars.domain.models.SWFilm
 
 class FilmsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

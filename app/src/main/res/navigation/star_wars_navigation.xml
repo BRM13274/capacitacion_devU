@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/starWarsFragment"
-        android:name="com.banregio.devuapp.starwars.StarWarsFragment"
+        android:name="com.banregio.devuapp.starwars.presentation.StarWarsFragment"
         android:label="@string/lbl_header_star_wars"
         tools:layout="@layout/fragment_star_wars">
         <action
@@ -16,18 +16,27 @@
         <action
             android:id="@+id/action_starWarsFragment_to_starShipsFragment"
             app:destination="@id/starShipsFragment" />
+        <action
+            android:id="@+id/action_starWarsFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/filmsFragment"
-        android:name="com.banregio.devuapp.starwars.FilmsFragment"
+        android:name="com.banregio.devuapp.starwars.presentation.films.FilmsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films" />
 
     <fragment
         android:id="@+id/starShipsFragment"
-        android:name="com.banregio.devuapp.starwars.StarShipsFragment"
+        android:name="com.banregio.devuapp.starwars.presentation.starships.StarShipsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_star_ships" />
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.banregio.devuapp.starwars.presentation.NotificationFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notification"  />
 
 </navigation>

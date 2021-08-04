@@ -1,4 +1,4 @@
-package com.banregio.devuapp.starwars
+package com.banregio.devuapp.starwars.presentation
 
 import android.os.Bundle
 import android.view.View
@@ -24,6 +24,10 @@ class StarWarsFragment : DevUFragment(R.layout.fragment_star_wars) {
 
         binding.btnGoToStarShips.setOnClickListener {
             findNavController().navigate(R.id.action_starWarsFragment_to_starShipsFragment)
+        }
+
+        binding.btnGoToNotifications.setOnClickListener {
+            findNavController().navigate(R.id.action_starWarsFragment_to_notificationsFragment)
         }
     }
 
